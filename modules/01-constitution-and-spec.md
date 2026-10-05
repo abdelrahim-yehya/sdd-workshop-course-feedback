@@ -34,11 +34,9 @@ Here is the technique you'll reuse all afternoon. Don't try to write the constit
 ### 👉 Prompt 1 — open the interview (plain message, **not** a slash command)
 
 ```text
-We're starting a new project: a small web app where students leave anonymous feedback on a course, and professors read that feedback on a private dashboard.
+We're building an internal course-feedback tool for a university department. This is phase one: local development only, so skip deployment, infrastructure, scalability and compliance. Keep security at the application level.
 
-Before we write any spec, I want to agree the ground rules the whole project must follow — how we test, what dependencies we allow, how we handle security and privacy, and how we work in increments.
-
-Interview me. Ask up to five questions at a time, give me your recommended default for each so I can just say "defaults" where I don't care, and don't write anything until I tell you to.
+Interview me for the project constitution before writing anything. Ask up to five questions at a time, with a recommended default for each. When you have enough, summarise and wait for my confirmation.
 ```
 
 **Answer the questions.** This is the part that matters. Here's the answer key so the room stays aligned — if the agent asks something not on this list, decide for yourself and say so out loud:
