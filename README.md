@@ -1,6 +1,6 @@
 # Spec-Driven Development with GitHub Spec Kit
 
-**A 3-hour hands-on workshop for software engineering teams**
+**A 4-hour hands-on workshop for software engineering teams**
 
 You will build a working course-feedback application end to end without writing application code by hand. Every line is produced by an AI agent from a specification you control. By the end you will have a repository with six commits, a test suite, and more importantly, a repeatable process you can take back to your own codebase.
 
