@@ -115,7 +115,6 @@ Steps 1–2 and 4 are where humans do real work. The rest is where the agent ear
 | 4 | [Secure CSV Export](modules/04-csv-export.md) | 25 min | Letting the agent sharpen a vague requirement |
 | 5 | [Design System Constraints](modules/05-design-system.md) | 20 min | Constraining the agent via the constitution |
 | 6 | [Capstone: Persistence & Analytics](modules/06-capstone.md) | 20 min | Authorizing a dependency; the converge loop |
-| — | [Wrap-up & Discussion](INSTRUCTOR-NOTES.md#wrap-up) | 5 min | Where this breaks; how to adopt it |
 
 **Supporting files**
 
