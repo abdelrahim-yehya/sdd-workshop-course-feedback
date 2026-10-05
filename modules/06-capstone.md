@@ -183,6 +183,4 @@ Six commits. Every one traceable to a specification. Not one line of application
 1. **Break it on purpose.** Hand-edit one requirement in `spec.md`, run `/speckit.analyze`, watch it catch the inconsistency.
 2. **Regenerate from scratch.** Clone to a new directory, delete `src/` and `public/`, run `/speckit.implement` against the same specs. How close is it? That divergence is the honest measure of how complete your specs really are.
 3. **Try a longer prompt for comparison.** Write one feature the old way — a single 300-word spec prompt with no clarify. Compare the resulting `spec.md` with one built through dialogue. Which is better, and which took less effort?
-4. **Point it at real work.** See [`INSTRUCTOR-NOTES.md`](../INSTRUCTOR-NOTES.md#adopting-this-on-an-existing-codebase).
-
 ---
