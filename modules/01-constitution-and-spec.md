@@ -43,7 +43,7 @@ Interview me for the project constitution before writing anything. Ask up to fiv
 
 | If it asks about… | We're going with |
 |---|---|
-| Testing approach | Strict TDD. Failing Jest test first, always. Happy path **and** a failure path for every route. |
+| Testing approach | Every functional requirement has an automated Jest test, and a task is done only when its tests pass. API routes and business logic are test-first: failing test, then implementation. Frontend tests must exist and pass, but the order isn't enforced. Happy path **and** a failure path for every route. |
 | Dependencies | Closed set. Nothing added unless a spec names it explicitly. No frontend or CSS frameworks — vanilla JS and CSS. |
 | Auth | Any route that reads or exports feedback requires HTTP Basic Auth. Credentials from env vars, never committed, never logged. |
 | Privacy | Submissions are anonymous. No names, emails, IPs, or identifiers stored — ever. |
