@@ -17,7 +17,7 @@ If you completed the pre-work, skip to **0.2**.
 | Tool | macOS | Linux | Windows (PowerShell) |
 | --- | --- | --- | --- |
 | **uv** | `brew install uv`<br>*or*<br>`curl -LsSf https://astral.sh/uv/install.sh \| sh` | `curl -LsSf https://astral.sh/uv/install.sh \| sh` | `powershell -ExecutionPolicy ByPass -c "irm https://astral.sh/uv/install.ps1 \| iex"` |
-| **Node.js** *(v20+)* | `brew install node`<br>*or* download from [nodejs.org](https://nodejs.org/) | Use `nvm` or download from [nodejs.org](https://nodejs.org/) | `winget install OpenJS.NodeJS.LTS`<br>*or* download from [nodejs.org](https://nodejs.org/) |
+| **Node.js** *(v22LTS+)* | `brew install node`<br>*or* download from [nodejs.org](https://nodejs.org/) | Use `nvm` or download from [nodejs.org](https://nodejs.org/) | `winget install OpenJS.NodeJS.LTS`<br>*or* download from [nodejs.org](https://nodejs.org/) |
 | **Git** | `brew install git`<br>*or* run `git --version` to prompt install | `sudo apt update && sudo apt install git -y` | `winget install --id Git.Git -e --source winget`<br>*or* download from [git-scm.com](https://git-scm.com/) |
 
 ---
