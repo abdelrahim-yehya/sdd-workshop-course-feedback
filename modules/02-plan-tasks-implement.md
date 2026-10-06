@@ -14,32 +14,10 @@ Take the spec through the full quality-gated cascade to a running, tested MVP. T
 
 Now, and only now, the tech stack. Same technique as the constitution: interview first, generate second.
 
-### 👉 Prompt 1 — the interview (plain message)
+### 👉 Prompt 1 — Plan
 
 ```text
-We're ready to plan the technical implementation of this spec. Before you write the plan, interview me about the choices you need me to make — stack, storage, authentication, testing, and project layout. Up to five questions at a time, with your recommendation for each so I can accept defaults where I don't have an opinion. Don't write the plan yet.
-```
-
-**Answer key:**
-
-| If it asks about… | We're going with |
-|---|---|
-| Runtime & framework | Node.js with Express. Single service, **no build step**, no bundler, no transpiler. |
-| Database | SQLite — `node:sqlite` built-in or `better-sqlite3`, agent's choice. In-memory is fine for this feature. |
-| API shape | `POST /api/feedback` (public) and `GET /api/feedback` (protected), plus static file serving. |
-| Auth mechanism | Basic Auth as Express middleware, reading `PROFESSOR_USER` / `PROFESSOR_PASS` from env, with a documented `.env.example`. |
-| Frontend | Two static pages — `index.html`, `dashboard.html`. Vanilla JS with `fetch`, one plain CSS file. |
-| Testing | Jest plus supertest for HTTP-level route tests. `npm test` runs the suite, `npm start` runs the server. |
-| Project layout | `src/` for code, `public/` for static assets, `tests/` mirroring source. |
-| Where validation lives | Its own module, so it's unit-testable independently of the routes. |
-| Schema details | `id`, `rating`, `comment`, `created_at`. Let the agent propose types. |
-
-If the agent proposes something better than what's in this table, take it — and say why out loud. That's the workshop working.
-
-### 👉 Prompt 2 — generate
-
-```text
-/speckit.plan Use the stack and structure we just agreed. Keep it a single Node service with no build step, and keep the route handlers thin with logic in modules.
+/speckit.plan A single Node.js service with Express, no build step, no bundler or transpiler. SQLite through the built-in node:sqlite module, in-memory for this feature. API: POST /api/feedback (public) and GET /api/feedback (protected), plus static file serving. Basic Auth as Express middleware reading PROFESSOR_USER and PROFESSOR_PASS from the environment, with a documented .env.example. Frontend: two static pages, index.html and dashboard.html, with vanilla JS using fetch and one plain CSS file. Jest plus supertest for tests; npm test runs the suite and npm start runs the server. Layout: src/ for code, public/ for static assets, tests/ mirroring src/. Validation in its own module so it is unit-testable independently of the routes. Schema: id, rating, comment, created_at. Keep route handlers thin with logic in modules.
 ```
 
 **Read `plan.md`, `data-model.md`, and the contracts directory.** Two things to check as a group:
@@ -53,7 +31,7 @@ If the agent proposes something better than what's in this table, take it — an
 
 Before breaking work down, validate the requirements themselves. This generates a review checklist that tests the **spec**, not the code: *is every rule defined for every case? is behaviour specified when X is absent?*
 
-### 👉 Prompt 3
+### 👉 Prompt 2
 
 ```text
 /speckit.checklist Focus on validation, authentication boundaries, and empty or error states.
@@ -69,7 +47,7 @@ Open the generated checklist under `specs/001-*/checklists/`. Work through it as
 
 ## 2.3 — `/speckit.tasks` — the executable breakdown
 
-### 👉 Prompt 4
+### 👉 Prompt 3
 
 ```text
 /speckit.tasks
@@ -93,7 +71,7 @@ Count them. Typically 25–40. Ask: *how long would writing this breakdown by ha
 
 A read-only pass across `spec.md`, `plan.md`, and `tasks.md` looking for conflicts, gaps, and orphans: a task with no matching requirement, a plan choice that contradicts the spec, a constitutional violation.
 
-### 👉 Prompt 5
+### 👉 Prompt 4
 
 ```text
 /speckit.analyze
@@ -115,7 +93,7 @@ Re-run `/speckit.analyze` until clean. This discipline — *fix it where it's ow
 
 ## 2.5 — `/speckit.implement` — build it
 
-### 👉 Prompt 6
+### 👉 Prompt 5
 
 ```text
 /speckit.implement
@@ -152,7 +130,7 @@ That second sentence preserves the invariant that the spec is the source of trut
 
 `/speckit.implement` finishing is not the same as the feature being complete. `/speckit.converge` assesses the **codebase** against the spec, plan, and tasks. It's append-only: never edits code, and its only possible write is adding tasks to `tasks.md`.
 
-### 👉 Prompt 7
+### 👉 Prompt 6
 
 ```text
 /speckit.converge
@@ -169,7 +147,7 @@ Loop until converged. This is the closest thing SDD has to a definition of done,
 
 ## 2.7 — Commit the MVP
 
-### 👉 Prompt 8
+### 👉 Prompt 7
 
 ```text
 Check the diff, confirm the tests pass, then write a Conventional Commits message for the course feedback MVP and commit everything. Don't push.
