@@ -42,7 +42,7 @@ Jest tests, with a happy path and a failure path for every route, and
 API routes and business logic are written test-first;
 (2) submissions are anonymous, so no names, emails, IPs or identifiers
 are ever stored; (3) all input is validated server-side before the
-database, using parameterised queries only; (4) keep code simple and well documented;
+database, using parameterised queries only; (4) no dependencies beyond those a spec names, and no frontend or CSS frameworks;
 (5) one feature is one spec and one commit, using Conventional Commits with tests green,
 and any rule that must be broken is recorded in the spec with a written
 rationale before it is implemented.
