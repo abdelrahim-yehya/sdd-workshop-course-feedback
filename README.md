@@ -43,38 +43,15 @@ When a requirement changes, you do not open the editor and patch the code. You c
 
 ## 🗣 How we prompt in this workshop
 
-Every prompt here is **short**. A sentence or two. You are not expected to write a 300-word specification into a chat box, that is exactly the skill this workshop is trying to make unnecessary.
+There is no separate interview step. Spec Kit already has a command that interrogates you, `/speckit.clarify`, so we use it instead of improvising our own. Three kinds of prompt:
 
-Instead, the detail gets **elicited**, not dictated. Two patterns, used throughout:
+**Seed, then clarify.** For specifications. A short `/speckit.specify` (a few sentences of what and why), then `/speckit.clarify` repeatedly until nothing is ambiguous.
 
-### Pattern A — Interview first, then command
+**Decide, then command.** For the constitution, the plan and constitution amendments. These record decisions the team has already made, so the command carries them directly, in one short paragraph.
 
-For anything where you'd otherwise have to know all the answers up front (the constitution, the technical plan), you open with a plain message asking the agent to interview you:
+**Cascade.** `/speckit.tasks`, `/speckit.analyze`, `/speckit.implement` and `/speckit.converge`, with no arguments or one narrow scope.
 
-```text
-Interview me before you write anything. Ask me the questions you need answered to do this well, up to five at a time, and give me your recommended default for each so I can just say "defaults" where I don't care. When you have enough, summarise what you understood and wait for my confirmation before generating anything.
-```
-
-Then the slash command is one line, referring back to the conversation:
-
-```text
-/speckit.constitution Use the principles we just agreed on.
-```
-
-**Why two turns instead of appending "ask me questions" to the slash command?** Because the slash command is a prompt template that already instructs the agent to produce an artifact. Asking it to interview you *and* generate in the same turn fights itself, and the agent usually resolves the conflict by generating. Separating them is more reliable. This is a genuinely useful thing to know about slash commands in general.
-
-### Pattern B — Seed, then let the tool ask
-
-For specifications, you don't need Pattern A — Spec Kit already has a question-asking command:
-
-```text
-/speckit.specify [one or two sentences: what and why]
-```
-```text
-/speckit.clarify
-```
-
-`/speckit.clarify` asks up to five targeted questions about whatever is underspecified and writes your answers back into the spec. Run it repeatedly until nothing is left ambiguous. This is the toolkit doing requirements engineering with you.
+*Don't append "ask me questions" to a slash command. The command template already instructs the agent to produce an artifact, so asked to do both, it generates.*
 
 ### The one catch
 
@@ -125,7 +102,7 @@ Steps 1–2 and 4 are where humans do real work. The rest is where the agent ear
 
 Have these working **before** the workshop starts. Budget 10 minutes the day before.
 
-- **Node.js 20+** and npm — `node --version`
+- **Node.js 22+** and npm — `node --version`
 - **Git** — `git --version`
 - **[uv](https://docs.astral.sh/uv/)** — the Python package manager that ships the Spec Kit CLI
 - **An AI coding agent CLI** — Claude Code, GitHub Copilot CLI, Gemini CLI, Cursor, Codex, or another supported integration, authenticated and working
