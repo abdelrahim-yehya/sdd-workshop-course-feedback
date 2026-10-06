@@ -27,47 +27,23 @@ The second is **constitutional**. Put it in a spec and you must restate it in ev
 
 Interview first, again because "modern and polished" is exactly the kind of phrase that means nothing until someone makes you define it.
 
-### 👉 Prompt 1 — the interview (plain message)
+### 👉 Prompt 1
 
 ```text
-I want to add a design principle to our constitution. The UI has to look modern and polished, but it must be built only with hand-written CSS, no frameworks, no component libraries, no build step.
-
-Interview me about what "modern and polished" should mean concretely: spacing, colour, elevation, interaction states, accessibility, responsiveness. Up to five questions with your recommendations. Also ask me what should be explicitly forbidden. Don't write anything yet.
+/speckit.constitution Add a new design principle and keep every existing principle intact, bumping the document version. The UI must look modern and polished using only hand-written CSS.
+Rules: (1) all colours and spacing are defined once as CSS custom properties on :root, with an 8px spacing base and no literal colour or spacing value anywhere else; (2) cards, inputs and buttons have an 8px radius, with layered subtle shadows instead of heavy borders; (3) every interactive element defines hover, focus-visible, active and disabled states, and focus indicators are always clearly visible and never removed; (4) text contrast meets WCAG AA; (5) layouts use Grid and Flexbox and work down to 360px wide with no horizontal scroll; (6) forbidden: CSS frameworks, resets, component libraries, icon fonts or packages, third-party web fonts, preprocessors and any build step; allowed: system font stacks and inline SVG.
 ```
-
-**Answer key:**
-
-| If it asks about… | We're going with |
-|---|---|
-| Colour and spacing values | Defined once as CSS custom properties on `:root`. No literal colour or spacing value anywhere else. |
-| Spacing scale | 8px base. |
-| Corners and elevation | 8px radius on cards, inputs, buttons. Layered subtle box shadows rather than heavy borders. |
-| Interaction states | Every interactive element defines hover, focus-visible, active, and disabled. |
-| Focus indicators | Always clearly visible. Never removed. Non-negotiable. |
-| Contrast | WCAG AA for text on interactive and surface colours. |
-| Layout | Grid and Flexbox. Usable down to 360px wide with no horizontal scroll. |
-| Explicitly forbidden | CSS frameworks, resets, component libraries, icon fonts or packages, third-party web fonts, preprocessors, any build step. |
-| Explicitly allowed | System font stacks, inline SVG. |
-
-### 👉 Prompt 2 — generate
-
-```text
-/speckit.constitution Add what we just agreed as a new numbered design principle. Keep every existing principle intact and bump the document version.
-```
-
-**Open `.specify/memory/constitution.md`.** Version bumped, new principle present, earlier principles untouched. That amendment is now enforced across every future `/speckit.plan`.
-
 ---
 
 ## 5.3 — Specify the visual work
 
-### 👉 Prompt 3
+### 👉 Prompt 2
 
 ```text
 /speckit.specify Make the app look and feel modern. No behaviour changes at all, same routes, same validation, same auth. Star rating instead of a number input. Feedback shown as cards with the course as a badge. Summary figures at the top of the dashboard. And every state properly designed: loading, empty, and error.
 ```
 
-### 👉 Prompt 4
+### 👉 Prompt 3
 
 ```text
 /speckit.clarify
@@ -90,7 +66,7 @@ Interview me about what "modern and polished" should mean concretely: spacing, c
 
 ## 5.4 — Cascade
 
-### 👉 Prompt 5
+### 👉 Prompt 4
 
 ```text
 /speckit.plan Restyle the existing frontend only, server code and API contracts unchanged. Rebuild the stylesheet around a :root custom property block. Build the star rating from accessible radio inputs styled with CSS, so keyboard operation and screen-reader semantics come for free instead of being rebuilt in JavaScript. Existing tests must keep passing unmodified.
@@ -140,7 +116,7 @@ The follow-up question is the important half. Violated constraints usually revea
 
 ## 5.6 — Commit
 
-### 👉 Prompt 6
+### 👉 Prompt 5
 
 ```text
 Check the diff, confirm tests pass and no dependencies were added, write a Conventional Commits message for the vanilla CSS design system, and commit. Don't push.
