@@ -14,7 +14,7 @@ Establish the project's non-negotiable principles, then write a specification th
 
 The constitution (`.specify/memory/constitution.md`) holds the rules that every later phase is evaluated against: testing discipline, architectural constraints, security posture, dependency policy.
 
-It exists because of a failure mode you will otherwise hit repeatedly: **restating the same constraint in every spec.** "Use TDD." "No frameworks." "Auth required." Ten specs later, one of them omits a line and the agent quietly does something else.
+It exists because of a failure mode you will otherwise hit repeatedly: **restating the same constraint in every spec.** "Test the API first." "No frameworks." "Auth required." Ten specs later, one of them omits a line and the agent quietly does something else.
 
 | Constitution | Spec |
 |---|---|
@@ -27,39 +27,32 @@ This is the piece most teams skip, and it is the piece that determines whether S
 
 ---
 
-## 1.2 — The Interview Rule
+## 1.2 — Setting the principles
 
-Here is the technique you'll reuse all afternoon. Don't try to write the constitution. Make the agent extract it from you.
+The constitution is the one artifact where there is nothing to discover: the principles are decisions the team has already made. So there is no interview here. You hand the agent the principles in a single command and let it turn them into a structured, versioned document. The interrogation comes in 1.4, where the spec has real unknowns.
 
-### 👉 Prompt 1 — open the interview (plain message, **not** a slash command)
-
-```text
-We're building an internal course-feedback tool for a university department. This is phase one: local development only, so skip deployment, infrastructure, scalability and compliance. Keep security at the application level.
-
-Interview me for the project constitution before writing anything. Ask up to five questions at a time, with a recommended default for each. When you have enough, summarise and wait for my confirmation.
-```
-
-**Answer the questions.** This is the part that matters. Here's the answer key so the room stays aligned — if the agent asks something not on this list, decide for yourself and say so out loud:
-
-| If it asks about… | We're going with |
-|---|---|
-| Testing approach | Every functional requirement has an automated Jest test, and a task is done only when its tests pass. API routes and business logic are test-first: failing test, then implementation. Frontend tests must exist and pass, but the order isn't enforced. Happy path **and** a failure path for every route. |
-| Dependencies | Closed set. Nothing added unless a spec names it explicitly. No frontend or CSS frameworks — vanilla JS and CSS. |
-| Auth | Any route that reads or exports feedback requires HTTP Basic Auth. Credentials from env vars, never committed, never logged. |
-| Privacy | Submissions are anonymous. No names, emails, IPs, or identifiers stored — ever. |
-| Input handling | Validate server-side before the database. Parameterised queries only. |
-| Increments | One feature = one spec = one commit. Conventional Commits. Tests green before committing. |
-| What happens when a rule must be broken | It gets written down in the spec with a rationale, **before** implementation. |
-
-### 👉 Prompt 2 — generate it
+### 👉 Prompt 1 — generate the constitution
 
 ```text
-/speckit.constitution Use the principles we just agreed on. Write them as numbered, non-negotiable principles, each with a one-line rationale, plus a governance clause stating that any deviation must be recorded in a specification with a written rationale before it is implemented.
+/speckit.constitution Create the principles for a small university
+course-feedback website: a public form where students submit anonymous
+feedback, and a private dashboard where professors review it.
+Priorities: (1) every functional requirement is covered by automated
+Jest tests, with a happy path and a failure path for every route, and
+API routes and business logic are written test-first;
+(2) submissions are anonymous, so no names, emails, IPs or identifiers
+are ever stored; (3) all input is validated server-side before the
+database, using parameterised queries only; (4) keep code simple and well documented;
+(5) one feature is one spec and one commit, using Conventional Commits with tests green,
+and any rule that must be broken is recorded in the spec with a written
+rationale before it is implemented.
 ```
 
-**Open `.specify/memory/constitution.md` and read it.** The agent has turned a five-minute conversation into a versioned, structured document that every subsequent command is checked against.
+**Open `.specify/memory/constitution.md` and read it.** Check three things:
 
-> **Compare with the alternative.** Some tutorials have you paste a 400-word constitution. That works too — but only if you already knew all seven things to say. The interview gets you there without knowing, and it surfaces the questions you'd have forgotten.
+- Every one of the five priorities became a principle, and the "broken rules are recorded in the spec first" part became a governance clause.
+- Nothing was dropped or softened.
+- Nothing was added that you didn't ask for. This is the file everything else is judged against, so if the agent invented a principle, challenge it or delete it.
 
 ---
 
@@ -71,17 +64,17 @@ One rule dominates this step:
 
 This separation is not bureaucratic. It exists so requirements survive a change of stack, and so that reviewing *what we're building* isn't tangled up with *how*. If your spec mentions a library name, you've written a plan.
 
-### 👉 Prompt 3 — seed the spec (short, deliberately)
+### 👉 Prompt 2 — seed the spec (short, deliberately)
 
 ```text
 /speckit.specify Students leave anonymous feedback on a course: a rating from 1 to 5 and a written comment. Professors read all of it on a private dashboard that shows nothing at all to anyone without credentials. That's the whole first feature, no multiple courses, no export, no charts, no student accounts.
 ```
 
-Four sentences. Notice what it contains: the two audiences, the shape of the data, the one hard security property, and an explicit scope boundary. Notice what it *doesn't* contain: validation rules, ordering, empty states, error handling. Those are coming, from the agent, not from you.
+Three sentences. Notice what they contain: the two audiences, the shape of the data, the one hard security property, and an explicit scope boundary. Notice what they *don't* contain: validation rules, ordering, empty states, error handling. Those are coming, from the agent, not from you.
 
 **Open `spec.md` and read it.** Look for:
 
-- **User stories, prioritised** (P1, P2, P3) — your four sentences decomposed into independently testable slices
+- **User stories, prioritised** (P1, P2, P3) — your three sentences decomposed into independently testable slices
 - **Numbered functional requirements** — what tasks will trace back to
 - **`[NEEDS CLARIFICATION]` markers** — genuine ambiguities the agent refused to invent answers for. That refusal is a feature.
 
@@ -91,13 +84,13 @@ Four sentences. Notice what it contains: the two audiences, the shape of the dat
 
 `/speckit.clarify` asks up to five targeted questions about underspecified areas and writes your answers back into `spec.md`. It's the cheapest quality gate in the process: answering here costs 20 seconds, discovering the same gap after implementation costs 20 minutes.
 
-### 👉 Prompt 4 — broad pass, no arguments
+### 👉 Prompt 3 — broad pass, no arguments
 
 ```text
 /speckit.clarify
 ```
 
-**Answer key:**
+**Answer key** (if the agent asks something not on this list, decide for yourself and say so out loud):
 
 | If it asks about… | We're going with |
 |---|---|
@@ -111,7 +104,7 @@ Four sentences. Notice what it contains: the two audiences, the shape of the dat
 | Credentials | One shared professor username and password, from environment variables. |
 | What an unauthenticated visitor sees | A challenge, and zero feedback content. Not a redirect to a page that leaks counts. |
 
-### 👉 Prompt 5 — mop up
+### 👉 Prompt 4 — mop up
 
 ```text
 /speckit.clarify Focus on anything still marked NEEDS CLARIFICATION.
@@ -119,13 +112,13 @@ Four sentences. Notice what it contains: the two audiences, the shape of the dat
 
 Repeat until clean.
 
-**Re-open `spec.md`.** Your answers are now requirements, numbered and version-controlled. You've just done requirements engineering in five minutes, from four sentences, and there's a written record of every decision.
+**Re-open `spec.md`.** Your answers are now requirements, numbered and version-controlled. You've just done requirements engineering in five minutes, from three sentences, and there's a written record of every decision.
 
 ---
 
 ## ✅ Checkpoint
 
-- [ ] `.specify/memory/constitution.md` has numbered principles and a governance clause
+- [ ] `.specify/memory/constitution.md` has numbered principles and a governance clause, and reflects the six principles you pasted (testing, dependencies, auth, privacy, input handling, increments)
 - [ ] `specs/001-*/spec.md` exists with prioritised user stories and numbered requirements
 - [ ] No tech stack names appear anywhere in `spec.md`
 - [ ] No `[NEEDS CLARIFICATION]` markers remain
@@ -134,7 +127,7 @@ Repeat until clean.
 
 ## 💬 Discussion (2 min)
 
-> Compare your `spec.md` with the person next to you. Same four-sentence seed, different conversations, how far apart did you end up? That gap is the honest measure of how much the dialogue is doing, and it's the thing to be careful about when two people on your team specify adjacent features.
+> Compare your `spec.md` with the person next to you. Same three-sentence seed, different conversations, how far apart did you end up? That gap is the honest measure of how much the dialogue is doing, and it's the thing to be careful about when two people on your team specify adjacent features.
 
 ---
 
