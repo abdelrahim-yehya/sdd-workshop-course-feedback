@@ -30,7 +30,7 @@ Interview first, again because "modern and polished" is exactly the kind of phra
 ### 👉 Prompt 1
 
 ```text
-/speckit.constitution Add a new design principle and keep every existing principle intact, bumping the document version. The UI must look modern and polished using only hand-written CSS.
+/speckit-constitution Add a new design principle and keep every existing principle intact, bumping the document version. The UI must look modern and polished using only hand-written CSS.
 Rules: (1) all colours and spacing are defined once as CSS custom properties on :root, with an 8px spacing base and no literal colour or spacing value anywhere else; (2) cards, inputs and buttons have an 8px radius, with layered subtle shadows instead of heavy borders; (3) every interactive element defines hover, focus-visible, active and disabled states, and focus indicators are always clearly visible and never removed; (4) text contrast meets WCAG AA; (5) layouts use Grid and Flexbox and work down to 360px wide with no horizontal scroll; (6) forbidden: CSS frameworks, resets, component libraries, icon fonts or packages, third-party web fonts, preprocessors and any build step; allowed: system font stacks and inline SVG.
 ```
 ---
@@ -40,13 +40,13 @@ Rules: (1) all colours and spacing are defined once as CSS custom properties on 
 ### 👉 Prompt 2
 
 ```text
-/speckit.specify Make the app look and feel modern. No behaviour changes at all, same routes, same validation, same auth. Star rating instead of a number input. Feedback shown as cards with the course as a badge. Summary figures at the top of the dashboard. And every state properly designed: loading, empty, and error.
+/speckit-specify Make the app look and feel modern. No behaviour changes at all, same routes, same validation, same auth. Star rating instead of a number input. Feedback shown as cards with the course as a badge. Summary figures at the top of the dashboard. And every state properly designed: loading, empty, and error.
 ```
 
 ### 👉 Prompt 3
 
 ```text
-/speckit.clarify
+/speckit-clarify
 ```
 
 **Answer key:**
@@ -69,20 +69,17 @@ Rules: (1) all colours and spacing are defined once as CSS custom properties on 
 ### 👉 Prompt 4
 
 ```text
-/speckit.plan Restyle the existing frontend only, server code and API contracts unchanged. Rebuild the stylesheet around a :root custom property block. Build the star rating from accessible radio inputs styled with CSS, so keyboard operation and screen-reader semantics come for free instead of being rebuilt in JavaScript. Existing tests must keep passing unmodified.
+/speckit-plan Restyle the existing frontend only, server code and API contracts unchanged. Rebuild the stylesheet around a :root custom property block. Build the star rating from accessible radio inputs styled with CSS, so keyboard operation and screen-reader semantics come for free instead of being rebuilt in JavaScript. Existing tests must keep passing unmodified.
 ```
 
 ```text
-/speckit.tasks
+/speckit-tasks
 ```
 ```text
-/speckit.analyze
+/speckit-analyze
 ```
 ```text
-/speckit.implement
-```
-```text
-/speckit.converge
+/speckit-implement
 ```
 
 ---

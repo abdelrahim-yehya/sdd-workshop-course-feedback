@@ -9,7 +9,7 @@
 Two techniques:
 
 1. **Handing the agent a deliberately vague requirement and letting it sharpen the edges.** CSV looks trivial and isn't commas, quotes, newlines, formula injection. You shouldn't have to know that list in advance. You should have to *recognise it when the agent offers it.*
-2. **Phased implementation** — scoping `/speckit.implement` to one slice at a time.
+2. **Phased implementation** — scoping `/speckit-implement` to one slice at a time.
 
 ---
 
@@ -18,7 +18,7 @@ Two techniques:
 ### 👉 Prompt 1
 
 ```text
-/speckit.specify Professors can download all the feedback as a CSV from the dashboard, behind the same login as everything else. It has to survive whatever a student typed in the comment box — the file mustn't break, and opening it in a spreadsheet mustn't do anything dangerous. Also add Refresh and Download buttons to the dashboard.
+/speckit-specify Professors can download all the feedback as a CSV from the dashboard, behind the same login as everything else. It has to survive whatever a student typed in the comment box — the file mustn't break, and opening it in a spreadsheet mustn't do anything dangerous. Also add Refresh and Download buttons to the dashboard.
 ```
 
 Read that back. *"Mustn't break"* and *"mustn't do anything dangerous"* are not requirements, they're gestures at requirements. A human reviewer would push back on them. So will the agent, which is the point.
@@ -30,7 +30,7 @@ Read that back. *"Mustn't break"* and *"mustn't do anything dangerous"* are not 
 ### 👉 Prompt 2
 
 ```text
-/speckit.clarify Focus on what "the file mustn't break" and "mustn't do anything dangerous" have to mean precisely. Enumerate the specific cases.
+/speckit-clarify Focus on what "the file mustn't break" and "mustn't do anything dangerous" have to mean precisely. Enumerate the specific cases.
 ```
 
 **What a good agent comes back with** and what to confirm:
@@ -49,20 +49,14 @@ Read that back. *"Mustn't break"* and *"mustn't do anything dangerous"* are not 
 | Button behaviour while a request is in flight | Disabled, so they can't be double-fired. Errors surface visibly, not just in the console. |
 
 
-### 👉 Prompt 3 — validate the requirements
-
-```text
-/speckit.checklist Focus on the CSV escaping and formula-injection requirements. Is every problematic character class covered, and is the expected output defined for each?
-```
-
 ---
 
 ## 4.3 — Plan
 
-### 👉 Prompt 4
+### 👉 Prompt 3
 
 ```text
-/speckit.plan Extend what we have. Put CSV generation in its own module with no Express dependency so it's unit-testable directly. Add a protected export route that takes the same course filter as the list route. Add the two dashboard buttons. Cover every escaping case we just enumerated in unit tests, plus route tests for auth, headers, and the filter.
+/speckit-plan Extend what we have. Put CSV generation in its own module with no Express dependency so it's unit-testable directly. Add a protected export route that takes the same course filter as the list route. Add the two dashboard buttons. Cover every escaping case we just enumerated in unit tests, plus route tests for auth, headers, and the filter.
 ```
 
 ---
@@ -70,16 +64,16 @@ Read that back. *"Mustn't break"* and *"mustn't do anything dangerous"* are not 
 ## 4.4 — Tasks, then implement in phases
 
 ```text
-/speckit.tasks
+/speckit-tasks
 ```
 ```text
-/speckit.analyze
+/speckit-analyze
 ```
 
-### 👉 Prompt 5 — phase 1
+### 👉 Prompt 4 — phase 1
 
 ```text
-/speckit.implement Only the CSV generation module and its unit tests. Don't touch the routes or the frontend yet.
+/speckit-implement Only the CSV generation module and its unit tests. Don't touch the routes or the frontend yet.
 ```
 
 ```bash
@@ -88,25 +82,22 @@ npm test
 
 Read the escaping tests. Are the edge cases actually asserted? This is the moment to catch a lazy implementation while it's five files, not fifty.
 
-### 👉 Prompt 6 — phase 2
+### 👉 Prompt 5 — phase 2
 
 ```text
-/speckit.implement Now the export route, with its auth and header tests.
+/speckit-implement Now the export route, with its auth and header tests.
 ```
 
 ```bash
 npm test
 ```
 
-### 👉 Prompt 7 — phase 3
+### 👉 Prompt 6 — phase 3
 
 ```text
-/speckit.implement Now the Refresh and Download buttons, including the disabled-while-pending behaviour and error surfacing.
+/speckit-implement Now the Refresh and Download buttons, including the disabled-while-pending behaviour and error surfacing.
 ```
 
-```text
-/speckit.converge
-```
 
 ---
 
@@ -128,7 +119,7 @@ npm start
 
 ## 4.6 — Commit
 
-### 👉 Prompt 8
+### 👉 Prompt 7
 
 ```text
 Check the diff, confirm tests pass, write a Conventional Commits message for the CSV export and dashboard controls, mention the escaping and formula-injection protections in the body, and commit. Don't push.

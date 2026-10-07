@@ -94,7 +94,7 @@ course-feedback/
 │   ├── extensions/
 │   └── feature.json             ← which feature is currently active
 ├── .claude/  (or .github/, .cursor/ …)
-│   └── commands/                ← the /speckit.* prompts your agent will run
+│   └── commands/                ← the /speckit-* prompts your agent will run
 └── specs/                       ← one directory per feature, created as you go
 ```
 

@@ -43,13 +43,13 @@ When a requirement changes, you do not open the editor and patch the code. You c
 
 ## 🗣 How we prompt in this workshop
 
-There is no separate interview step. Spec Kit already has a command that interrogates you, `/speckit.clarify`, so we use it instead of improvising our own. Three kinds of prompt:
+There is no separate interview step. Spec Kit already has a command that interrogates you, `/speckit-clarify`, so we use it instead of improvising our own. Three kinds of prompt:
 
-**Seed, then clarify.** For specifications. A short `/speckit.specify` (a few sentences of what and why), then `/speckit.clarify` repeatedly until nothing is ambiguous.
+**Seed, then clarify.** For specifications. A short `/speckit-specify` (a few sentences of what and why), then `/speckit-clarify` repeatedly until nothing is ambiguous.
 
 **Decide, then command.** For the constitution, the plan and constitution amendments. These record decisions the team has already made, so the command carries them directly, in one short paragraph.
 
-**Cascade.** `/speckit.tasks`, `/speckit.analyze`, `/speckit.implement` and `/speckit.converge`, with no arguments or one narrow scope.
+**Cascade.** `/speckit-tasks`, `/speckit-analyze` and `/speckit-implement`, with no arguments or one narrow scope.
 
 *Don't append "ask me questions" to a slash command. The command template already instructs the agent to produce an artifact, so asked to do both, it generates.*
 
@@ -65,15 +65,14 @@ Every module includes an **answer key**, the choices we're making and why, so no
 
 ```
 specify init                 →  scaffold the toolkit
-  /speckit.constitution      →  non-negotiable project principles      (once, then amended)
-    /speckit.specify         →  WHAT and WHY                           (no tech stack here)
-    /speckit.clarify         →  agent interrogates your ambiguity
-    /speckit.plan            →  HOW: stack, schema, routes, contracts
-    /speckit.checklist       →  "unit tests for your requirements"
-    /speckit.tasks           →  dependency-ordered, executable task list
-    /speckit.analyze         →  read-only consistency gate across artifacts
-    /speckit.implement       →  agent writes tests and code
-    /speckit.converge        →  verify codebase actually satisfies the spec
+  /speckit-constitution      →  non-negotiable project principles      (once, then amended)
+    /speckit-specify         →  WHAT and WHY                           (no tech stack here)
+    /speckit-clarify         →  agent interrogates your ambiguity
+    /speckit-plan            →  HOW: stack, schema, routes, contracts
+    /speckit-tasks           →  dependency-ordered, executable task list
+    /speckit-analyze         →  read-only consistency gate across artifacts
+    /speckit-implement       →  agent writes tests and code
+    /speckit-converge        →  (capstone only) verify the codebase satisfies the spec
 ```
 
 Steps 1–2 and 4 are where humans do real work. The rest is where the agent earns its keep.
@@ -91,7 +90,7 @@ Steps 1–2 and 4 are where humans do real work. The rest is where the agent ear
 | 3 | [Multi-Course Support](modules/03-multi-course.md) | 25 min | The mid-flight requirement change |
 | 4 | [Secure CSV Export](modules/04-csv-export.md) | 25 min | Letting the agent sharpen a vague requirement |
 | 5 | [Design System Constraints](modules/05-design-system.md) | 20 min | Constraining the agent via the constitution |
-| 6 | [Capstone: Persistence & Analytics](modules/06-capstone.md) | 20 min | Authorizing a dependency; the converge loop |
+| 6 | [Capstone: Persistence & Analytics](modules/06-capstone.md) | 20 min | Authorizing a dependency; `/speckit-converge` |
 
 **Supporting files**
 
@@ -114,13 +113,13 @@ Full install commands are in [Module 0](modules/00-setup.md).
 
 ## A note on command syntax
 
-Spec Kit commands are namespaced. Throughout this workshop they are written as `/speckit.specify`, `/speckit.plan`, and so on — the form used by Claude Code, Copilot, Cursor, and most integrations.
+Spec Kit commands are namespaced. Throughout this workshop they are written as `/speckit-specify`, `/speckit-plan`, and so on — the form used by Claude Code, Copilot, Cursor, and most integrations.
 
 Some skills-based agents expose them differently:
 
 | Agent | Form |
 |---|---|
-| Claude Code, Copilot, Cursor, Gemini | `/speckit.specify` |
+| Claude Code, Copilot, Cursor, Gemini | `/speckit-specify` |
 | Codex, ZCode | `$speckit-specify` |
 | Kimi | `/skill:speckit-specify` |
 

@@ -50,7 +50,7 @@ We take the third — which is exactly what the governance clause from Module 1 
 ### 👉 Prompt 2
 
 ```text
-/speckit.constitution Record that exception exactly as we scoped it, in a new "Authorised Exceptions" section. Keep every existing principle intact and bump the version.
+/speckit-constitution Record that exception exactly as we scoped it, in a new "Authorised Exceptions" section. Keep every existing principle intact and bump the version.
 ```
 
 Read the result. Every future plan is now checked against a rule set that permits exactly one dependency, for one page, for a written reason. That's what governance looks like when it's machine-readable.
@@ -62,7 +62,7 @@ Read the result. Every future plan is now checked against a rule set that permit
 ### 👉 Prompt 3
 
 ```text
-/speckit.specify Feedback has to survive a server restart. And the dashboard gets a chart showing the average rating per course. Everything else stays exactly as it is.
+/speckit-specify Feedback has to survive a server restart. And the dashboard gets a chart showing the average rating per course. Everything else stays exactly as it is.
 ```
 
 ---
@@ -72,7 +72,7 @@ Read the result. Every future plan is now checked against a rule set that permit
 ### 👉 Prompt 4
 
 ```text
-/speckit.clarify Focus on storage lifecycle and on how the chart should handle courses with no feedback.
+/speckit-clarify Focus on storage lifecycle and on how the chart should handle courses with no feedback.
 ```
 
 **Answer key:**
@@ -101,20 +101,20 @@ Two of those rows deserve airtime:
 ### 👉 Prompt 5
 
 ```text
-/speckit.plan Extend what we have. File-backed SQLite with a configurable path, gitignored, schema initialised idempotently at startup. Add a protected stats route returning count and average per course. Load Chart.js on the dashboard page only, integrity-pinned, styled with our existing CSS custom properties, with the same numbers rendered as text alongside it. Tests must use an isolated database.
+/speckit-plan Extend what we have. File-backed SQLite with a configurable path, gitignored, schema initialised idempotently at startup. Add a protected stats route returning count and average per course. Load Chart.js on the dashboard page only, integrity-pinned, styled with our existing CSS custom properties, with the same numbers rendered as text alongside it. Tests must use an isolated database.
 ```
 
 ```text
-/speckit.tasks
+/speckit-tasks
 ```
 ```text
-/speckit.analyze
+/speckit-analyze
 ```
 
 ### 👉 Prompt 6 — persistence first
 
 ```text
-/speckit.implement Only the persistence work: file-backed database, configurable path, gitignore, idempotent schema init, and the persistence tests. Not the stats route or the chart yet.
+/speckit-implement Only the persistence work: file-backed database, configurable path, gitignore, idempotent schema init, and the persistence tests. Not the stats route or the chart yet.
 ```
 
 ```bash
@@ -128,21 +128,28 @@ git status --short   # database.sqlite must NOT appear
 ### 👉 Prompts 7 & 8
 
 ```text
-/speckit.implement Now the stats route and its tests.
+/speckit-implement Now the stats route and its tests.
 ```
 ```text
-/speckit.implement Now the chart and the text summary.
+/speckit-implement Now the chart and the text summary.
 ```
 
 ---
 
-## 6.5 — Converge to done
+## 6.5 — `/speckit-converge` — did we build what we specified?
+
+One new command, and the last one in the toolkit. `/speckit-implement` finishing is not the same as the feature being complete. `/speckit-converge` assesses the **codebase** against the spec, plan, and tasks. It's append-only: it never edits code, and its only possible write is adding tasks to `tasks.md`.
 
 ```text
-/speckit.converge
+/speckit-converge
 ```
 
-Loop `/speckit.implement` → `/speckit.converge` until it reports converged. Watch the appended-task count shrink each pass. When it comes back clean, the codebase demonstrably satisfies the specification — a stronger claim than "the tests pass."
+Two outcomes:
+
+- **✅ Converged** — no gaps. `tasks.md` untouched. Done.
+- **Tasks appended** — gaps found, added under a Convergence section. Run `/speckit-implement` again, then converge again.
+
+Loop `/speckit-implement` → `/speckit-converge` until it reports converged. Watch the appended-task count shrink each pass. When it comes back clean, the codebase demonstrably satisfies the specification — a stronger claim than "the tests pass."
 
 ---
 
@@ -173,14 +180,14 @@ Six commits. Every one traceable to a specification. Not one line of application
 - [ ] Courses with no feedback show as no-data, not zero
 - [ ] Text summary present and correct with the chart blocked
 - [ ] Chart.js the only external asset, dashboard only
-- [ ] `/speckit.converge` reports converged
+- [ ] `/speckit-converge` reports converged
 - [ ] Six semantic commits
 
 ---
 
 ## 🏁 Stretch goals
 
-1. **Break it on purpose.** Hand-edit one requirement in `spec.md`, run `/speckit.analyze`, watch it catch the inconsistency.
-2. **Regenerate from scratch.** Clone to a new directory, delete `src/` and `public/`, run `/speckit.implement` against the same specs. How close is it? That divergence is the honest measure of how complete your specs really are.
+1. **Break it on purpose.** Hand-edit one requirement in `spec.md`, run `/speckit-analyze`, watch it catch the inconsistency.
+2. **Regenerate from scratch.** Clone to a new directory, delete `src/` and `public/`, run `/speckit-implement` against the same specs. How close is it? That divergence is the honest measure of how complete your specs really are.
 3. **Try a longer prompt for comparison.** Write one feature the old way — a single 300-word spec prompt with no clarify. Compare the resulting `spec.md` with one built through dialogue. Which is better, and which took less effort?
 ---

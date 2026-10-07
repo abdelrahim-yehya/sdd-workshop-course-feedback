@@ -34,7 +34,7 @@ The constitution is the one artifact where there is nothing to discover: the pri
 ### 👉 Prompt 1 — generate the constitution
 
 ```text
-/speckit.constitution Create the principles for a small university
+/speckit-constitution Create the principles for a small university
 course-feedback website: a public form where students submit anonymous
 feedback, and a private dashboard where professors review it.
 Priorities: (1) every functional requirement is covered by automated
@@ -60,14 +60,14 @@ rationale before it is implemented.
 
 One rule dominates this step:
 
-> **The spec describes behaviour, not technology.** No Express. No SQLite. No Jest. Those go in `/speckit.plan`.
+> **The spec describes behaviour, not technology.** No Express. No SQLite. No Jest. Those go in `/speckit-plan`.
 
 This separation is not bureaucratic. It exists so requirements survive a change of stack, and so that reviewing *what we're building* isn't tangled up with *how*. If your spec mentions a library name, you've written a plan.
 
 ### 👉 Prompt 2 — seed the spec (short, deliberately)
 
 ```text
-/speckit.specify Students leave anonymous feedback on a course: a rating from 1 to 5 and a written comment. Professors read all of it on a private dashboard that shows nothing at all to anyone without credentials. That's the whole first feature, no multiple courses, no export, no charts, no student accounts.
+/speckit-specify Students leave anonymous feedback on a course: a rating from 1 to 5 and a written comment. Professors read all of it on a private dashboard that shows nothing at all to anyone without credentials. That's the whole first feature, no multiple courses, no export, no charts, no student accounts.
 ```
 
 Three sentences. Notice what they contain: the two audiences, the shape of the data, the one hard security property, and an explicit scope boundary. Notice what they *don't* contain: validation rules, ordering, empty states, error handling. Those are coming, from the agent, not from you.
@@ -82,12 +82,12 @@ Three sentences. Notice what they contain: the two audiences, the shape of the d
 
 ## 1.4 — Let the tool interrogate you
 
-`/speckit.clarify` asks up to five targeted questions about underspecified areas and writes your answers back into `spec.md`. It's the cheapest quality gate in the process: answering here costs 20 seconds, discovering the same gap after implementation costs 20 minutes.
+`/speckit-clarify` asks up to five targeted questions about underspecified areas and writes your answers back into `spec.md`. It's the cheapest quality gate in the process: answering here costs 20 seconds, discovering the same gap after implementation costs 20 minutes.
 
 ### 👉 Prompt 3 — broad pass, no arguments
 
 ```text
-/speckit.clarify
+/speckit-clarify
 ```
 
 **Answer key** (if the agent asks something not on this list, decide for yourself and say so out loud):
@@ -107,7 +107,7 @@ Three sentences. Notice what they contain: the two audiences, the shape of the d
 ### 👉 Prompt 4 — mop up
 
 ```text
-/speckit.clarify Focus on anything still marked NEEDS CLARIFICATION.
+/speckit-clarify Focus on anything still marked NEEDS CLARIFICATION.
 ```
 
 Repeat until clean.

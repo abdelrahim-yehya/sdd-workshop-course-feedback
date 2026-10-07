@@ -33,7 +33,7 @@ Worth 60 seconds before you type anything.
 ### 👉 Prompt 1
 
 ```text
-/speckit.specify Feedback now belongs to a course. Three fixed courses: CS101, AI202, ENG304, no way to add more at runtime. Students pick one when they submit; professors can filter the dashboard by course or see everything. Everything from the first feature keeps working exactly as it does now.
+/speckit-specify Feedback now belongs to a course. Three fixed courses: CS101, AI202, ENG304, no way to add more at runtime. Students pick one when they submit; professors can filter the dashboard by course or see everything. Everything from the first feature keeps working exactly as it does now.
 ```
 
 That last sentence is the important one. **Stating what must not change is as important as stating what must.** Without it, a regenerated implementation can quietly drop a constraint from an earlier feature. This is the single most useful habit for iterative SDD, and it's six words.
@@ -45,7 +45,7 @@ That last sentence is the important one. **Stating what must not change is as im
 ### 👉 Prompt 2
 
 ```text
-/speckit.clarify
+/speckit-clarify
 ```
 
 **Answer key:**
@@ -70,7 +70,7 @@ That last row is a decision the agent may not think to raise. If it doesn't ask,
 ### 👉 Prompt 3
 
 ```text
-/speckit.plan Extend what we already have — don't restructure the project. Add the course to the schema and to both API routes, with the course list in one shared module. Extend the Jest suite to cover a valid submission per course, rejection of a missing or unknown course, and filtered versus unfiltered retrieval.
+/speckit-plan Extend what we already have — don't restructure the project. Add the course to the schema and to both API routes, with the course list in one shared module. Extend the Jest suite to cover a valid submission per course, rejection of a missing or unknown course, and filtered versus unfiltered retrieval.
 ```
 
 ---
@@ -78,16 +78,13 @@ That last row is a decision the agent may not think to raise. If it doesn't ask,
 ## 3.5 — Cascade
 
 ```text
-/speckit.tasks
+/speckit-tasks
 ```
 ```text
-/speckit.analyze
+/speckit-analyze
 ```
 ```text
-/speckit.implement
-```
-```text
-/speckit.converge
+/speckit-implement
 ```
 
 Then verify:
