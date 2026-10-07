@@ -14,7 +14,7 @@ Establish the project's non-negotiable principles, then write a specification th
 
 The constitution (`.specify/memory/constitution.md`) holds the rules that every later phase is evaluated against: testing discipline, architectural constraints, security posture, dependency policy.
 
-It exists because of a failure mode you will otherwise hit repeatedly: **restating the same constraint in every spec.** "Test the API first." "No frameworks." "Auth required." Ten specs later, one of them omits a line and the agent quietly does something else.
+It exists because of a failure mode you will otherwise hit repeatedly: **restating the same constraint in every spec.** "Test every route." "No frameworks." "Auth required." Ten specs later, one of them omits a line and the agent quietly does something else.
 
 | Constitution | Spec |
 |---|---|
@@ -38,8 +38,8 @@ The constitution is the one artifact where there is nothing to discover: the pri
 course-feedback website: a public form where students submit anonymous
 feedback, and a private dashboard where professors review it.
 Priorities: (1) every functional requirement is covered by automated
-Jest tests, with a happy path and a failure path for every route, and
-API routes and business logic are written test-first;
+Jest tests, with a happy path and a failure path for every route,
+written alongside the code they cover and passing before a task is done;
 (2) submissions are anonymous, so no names, emails, IPs or identifiers
 are ever stored; (3) all input is validated server-side before the
 database, using parameterised queries only; (4) no dependencies beyond those a spec names, and no frontend or CSS frameworks;

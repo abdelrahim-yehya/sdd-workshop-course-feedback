@@ -42,7 +42,7 @@ No arguments — everything it needs is in the artifacts.
 - **Phases**: Setup → Foundational (blocking prerequisites) → one phase per user story in priority order → Polish
 - **Dependency ordering** — tasks are sequenced, not listed
 - **`[P]` markers** — tasks that can safely run in parallel
-- **Test tasks interleaved within each user story**, not bolted on at the end. That's the constitution's Test-First principle showing up as structure.
+- **Test tasks interleaved within each user story**, not bolted on at the end. That's the constitution's testing principle showing up as structure.
 - Each task references the requirement it satisfies
 
 Count them. Typically 25–40. Ask: *how long would writing this breakdown by hand have taken?*
@@ -81,7 +81,7 @@ Re-run `/speckit-analyze` until clean. This discipline — *fix it where it's ow
 /speckit-implement
 ```
 
-The agent now works through `tasks.md` in dependency order: failing test, minimum code to pass, verify, next.
+The agent now works through `tasks.md` in dependency order: implement, write its tests, verify, next.
 
 ### Verify it actually works
 
