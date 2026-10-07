@@ -2,7 +2,7 @@
 
 Copy-paste reference for the whole workshop. Terminal commands are marked `bash`; everything else goes to your agent.
 
-Every prompt here is short by design. **The detail comes from your answers to `/speckit-clarify`**, not from the prompt. Each module in [`modules/`](modules/) carries the answer key for the questions the agent will ask.
+Specify prompts are short by design: **the detail comes from your answers to `/speckit-clarify`**, not from the prompt. Plan prompts are the exception, because they carry the technical decisions the team has already made. Each module in [`modules/`](modules/) carries the answer key for the questions the agent will ask.
 
 > Substitute your agent's command form if it differs: `$speckit-specify` (Codex, ZCode) or `/skill:speckit-specify` (Kimi).
 
@@ -73,9 +73,8 @@ rationale before it is implemented.
 ```text
 /speckit-clarify
 ```
-```text
-/speckit-clarify Focus on anything still marked NEEDS CLARIFICATION.
-```
+
+Run it again until it stops asking questions.
 
 📋 [Answer key →](modules/01-constitution-and-spec.md#14--let-the-tool-interrogate-you)
 
