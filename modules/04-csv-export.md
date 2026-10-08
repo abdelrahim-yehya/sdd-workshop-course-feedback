@@ -122,7 +122,7 @@ npm start
 ### 👉 Prompt 7
 
 ```text
-Check the diff, confirm tests pass, write a Conventional Commits message for the CSV export and dashboard controls, mention the escaping and formula-injection protections in the body, and commit. Don't push.
+/speckit-git-commit Mention the escaping and formula-injection protections in the body.
 ```
 
 ---

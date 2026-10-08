@@ -116,7 +116,7 @@ The follow-up question is the important half. Violated constraints usually revea
 ### 👉 Prompt 5
 
 ```text
-Check the diff, confirm tests pass and no dependencies were added, write a Conventional Commits message for the vanilla CSS design system, and commit. Don't push.
+/speckit-git-commit
 ```
 
 ---

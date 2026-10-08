@@ -107,7 +107,7 @@ npm install && npm test && npm start
 ### 8 — Commit
 
 ```text
-Check the diff, confirm the tests pass, then write a Conventional Commits message for the course feedback MVP and commit everything. Don't push.
+/speckit-git-commit
 ```
 
 ---
@@ -149,7 +149,7 @@ Check the diff, confirm the tests pass, then write a Conventional Commits messag
 ### 15 — Commit
 
 ```text
-Check the diff, confirm tests pass, write a Conventional Commits message for multi-course support and commit. Don't push.
+/speckit-git-commit
 ```
 
 ---
@@ -210,7 +210,7 @@ curl -i -u professor:yourpassword http://localhost:3000/api/feedback/export # ex
 ### 21 — Commit
 
 ```text
-Check the diff, confirm tests pass, write a Conventional Commits message for the CSV export and dashboard controls, mention the escaping and formula-injection protections in the body, and commit. Don't push.
+/speckit-git-commit Mention the escaping and formula-injection protections in the body.
 ```
 
 ---
@@ -264,7 +264,7 @@ head -40 public/*.css
 ### 27 — Commit
 
 ```text
-Check the diff, confirm tests pass and no dependencies were added, write a Conventional Commits message for the vanilla CSS design system, and commit. Don't push.
+/speckit-git-commit
 ```
 
 ---
@@ -321,7 +321,7 @@ Check the diff, confirm tests pass and no dependencies were added, write a Conve
 ### 33 — Final commit
 
 ```text
-Check the diff, confirm database.sqlite isn't staged and the tests pass, write a Conventional Commits message for the persistence and chart work, and commit. Don't push.
+/speckit-git-commit
 ```
 
 ---

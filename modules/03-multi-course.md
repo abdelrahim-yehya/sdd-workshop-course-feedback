@@ -103,7 +103,7 @@ Submit feedback for two different courses, then filter the dashboard by each.
 ### 👉 Prompt 4
 
 ```text
-Check the diff, confirm tests pass, write a Conventional Commits message for multi-course support and commit. Don't push.
+/speckit-git-commit
 ```
 
 ---

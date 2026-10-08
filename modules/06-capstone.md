@@ -158,7 +158,7 @@ Loop `/speckit-implement` → `/speckit-converge` until it reports converged. Wa
 ### 👉 Prompt 9
 
 ```text
-Check the diff, confirm database.sqlite isn't staged and the tests pass, write a Conventional Commits message for the persistence and chart work, and commit. Don't push.
+/speckit-git-commit
 ```
 
 Then look at what you built:

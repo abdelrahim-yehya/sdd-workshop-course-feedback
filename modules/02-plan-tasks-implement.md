@@ -113,7 +113,7 @@ That second sentence preserves the invariant that the spec is the source of trut
 ### 👉 Prompt 5
 
 ```text
-Check the diff, confirm the tests pass, then write a Conventional Commits message for the course feedback MVP and commit everything. Don't push.
+/speckit-git-commit
 ```
 
 Check with `git log -1` and `git show --stat`. If the message is vague, ask for a better one — the agent has full context and commit messages are documentation.
